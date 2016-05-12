@@ -6,12 +6,14 @@ Library qr code scanner for [Fuse](http://www.fusetools.com/).
 This library is adaptation (the structure and code base) of Fuse Gallery (https://github.com/bolav/fuse-gallery)
 The QR Code reader is using built iOS framework and the code is based on sample code by Yannick Loriot (https://github.com/yannickl/QRCodeReaderViewController)
 
-For the Android, still working on it, trying to use Google Play Service API (Google Vision) and based on google vision sample (https://github.com/googlesamples/android-vision)
+The android version is based on google vision sample that use Google Vision API (Part of Google Play Service library) (https://github.com/googlesamples/android-vision)
 
 
 ## Installation
 
 ## Build
+
+For android , the fuse build will result error (I'm not sure why but it's questioning '@style\Theme.AppCompat' in AndroidManifest.xml), but you can open and build the project with the android studio and it should be work just fine. Don't forget to install Google Play Service, Google Support Library and NDK before build the project.
 
 ## Usage
 
