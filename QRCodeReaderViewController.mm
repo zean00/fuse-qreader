@@ -90,7 +90,7 @@
     [_cameraView.layer insertSublayer:_codeReader.previewLayer atIndex:0];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    /*
+
     [codeReader setCompletionWithBlock:^(NSString *resultAsString) {
       if (self.completionBlock != nil) {
         self.completionBlock(resultAsString);
@@ -100,8 +100,8 @@
         [self.delegate reader:self didScanResult:resultAsString];
       }
     }];
-    */
 
+    /*
     __weak __typeof__(self) weakSelf = self;
 
     [codeReader setCompletionWithBlock:^(NSString *resultAsString) {
@@ -113,7 +113,7 @@
         [weakSelf.delegate reader:weakSelf didScanResult:resultAsString];
       }
     }];
-    
+    */
   }
   return self;
 }

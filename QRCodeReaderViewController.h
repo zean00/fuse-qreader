@@ -166,7 +166,7 @@
  * reader.
  * @since 1.0.0
  */
-@property (nonatomic, weak) id<QRCodeReaderDelegate> __nullable delegate;
+@property (nonatomic, strong) id<QRCodeReaderDelegate> __nullable delegate;
 
 /**
  * @abstract Sets the completion with a block that executes when a QRCode
