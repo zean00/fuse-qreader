@@ -12,7 +12,6 @@ For the Android, still working on it, trying to use Google Play Service API (Goo
 ## Installation
 
 ## Build
-for xCode 7.3, you need to enable option 'Weak References in Manual Retain Release'
 
 ## Usage
 
