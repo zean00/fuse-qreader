@@ -20,21 +20,20 @@ public class Qreader : NativeModule {
 
 }
 
-/*
+
 [ForeignInclude(Language.Java,
                 "android.app.Activity",
                 "android.content.Intent",
                 "android.net.Uri",
                 "android.os.Bundle",
-                "android.provider.MediaStore",
-                "java.io.InputStream",
-                "java.io.FileOutputStream",
-                "java.io.File")]
-																*/
+																"com.google.android.gms.common.api.CommonStatusCodes",
+																"com.fuse.qreader.BarcodeCaptureActivity",
+																"com.google.android.gms.vision.barcode.Barcode")]
+
 [ForeignInclude(Language.ObjC, "QreaderTask.h", "QRCodeReaderViewController.h","QRCodeReader.h")]
 public class QreaderImpl
 {
-	static int BAD_ID = 1234;
+	static int RC_BARCODE_CAPTURE = 9001;
 
 	static bool InProgress {
 		get; set;
@@ -43,9 +42,9 @@ public class QreaderImpl
 	static Promise<string> FutureResult {
 		get; set;
 	}
-	/*
+
 	static extern(Android) Java.Object _intentListener;
-	*/
+
 	public static Future<string> Scan() {
 		if (InProgress) {
 			return null;
@@ -59,7 +58,7 @@ public class QreaderImpl
 		FutureResult = new Promise<string>();
 		return FutureResult;
 	}
-	/*
+
 	[Foreign(Language.Java)]
 	static extern(Android) Java.Object Init()
 	@{
@@ -75,64 +74,44 @@ public class QreaderImpl
 	[Foreign(Language.Java)]
 	static extern(Android) bool OnRecieved(int requestCode, int resultCode, Java.Object data)
 	@{
-		debug_log("Got resultCode " + resultCode);
-		debug_log("(Okay is: " + Activity.RESULT_OK);
 
-	    if (requestCode == @{BAD_ID}) {
-	    	if (resultCode == Activity.RESULT_OK) {
-	    		Intent i = (Intent)data;
+						if (requestCode == @{RC_BARCODE_CAPTURE}&&resultCode == CommonStatusCodes.SUCCESS && data != null) {
 
-	    		Activity a = com.fuse.Activity.getRootActivity();
+										Barcode barcode = ((Intent)data).getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
+										if(barcode.displayValue != ""){
+													@{Picked(string):Call(barcode.displayValue)};
+										}else{
+														@{Cancelled():Call()};
+										}
+						}
+						else {
+										@{Cancelled():Call()};
+						}
 
-	    		// File outFile = new File(@{Path});
-	    		// http://stackoverflow.com/questions/10854211/android-store-inputstream-in-file
-	    		try {
-	    			FileOutputStream output = new FileOutputStream(@{Path:Get()});
-	    			InputStream input = a.getContentResolver().openInputStream(i.getData());
-
-	    			byte[] buffer = new byte[4 * 1024]; // or other buffer size
-	    			int read;
-
-	    			while ((read = input.read(buffer)) != -1) {
-	    			    output.write(buffer, 0, read);
-	    			}
-	    			output.flush();
-	    			output.close();
-	    			input.close();
-	    		    debug_log("And it's ours!, and done");
-	    		    @{Picked():Call()};
-	    		} catch (Exception e) {
-	    		    e.printStackTrace(); // handle exception, define IOException and others
-	    		    @{Cancelled():Call()};
-
-	    		}
-	    	}
-	    	else {
-	    		@{Cancelled():Call()};
-	    	}
-
-	    }
-
-	    return (requestCode == @{BAD_ID});
+	    return (requestCode == @{RC_BARCODE_CAPTURE});
 	@}
-*/
+
 	static extern(!Mobile) void ScannerImpl () {
 		throw new Fuse.Scripting.Error("Unsupported platform");
 	}
-	/*
+
+	[Require("Gradle.Dependencies.Compile","com.android.support:support-v4:23.0.1")]
+	[Require("Gradle.Dependencies.Compile","com.google.android.gms:play-services:8.1.0")]
+	[Require("Gradle.Dependencies.Compile","com.android.support:design:23.0.1")]
+	[Require("AndroidManifest.ApplicationElement", "<activity android:name=\"com.fuse.qreader.BarcodeCaptureActivity\" android:theme=\"@style/Theme.AppCompat\"></activity>")]
+	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera\"/>")]
+	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>")]
+	[Require("AndroidManifest.RootElement", "<uses-permission android:name=\"android.permission.CAMERA\"/>")]
 	[Foreign(Language.Java)]
-	static extern(Android) void GetPictureImpl ()
+	static extern(Android) void ScannerImpl ()
 	@{
 		Activity a = com.fuse.Activity.getRootActivity();
 		// Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-		Intent intent = new Intent();
-		intent.setType("image/*");
-		intent.setAction(Intent.ACTION_GET_CONTENT);
-		a.startActivityForResult(intent, @{BAD_ID});
+		Intent intent = new Intent(a, BarcodeCaptureActivity.class);
+		a.startActivityForResult(intent, @{RC_BARCODE_CAPTURE});
 
-		// http://stackoverflow.com/questions/5309190/android-pick-images-from-gallery
 	@}
-	*/
+
 	[Require("Entity","QreaderImpl.Cancelled()")]
 	[Require("Entity","QreaderImpl.Picked(string)")]
 	[Foreign(Language.ObjC)]

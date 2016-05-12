@@ -30,7 +30,8 @@
         "Fuse.Camera"
   ],
   "Includes": [
-    "Gallery.uno",
+    "*.uno",
+    "*.ux",
     "QreaderTask.h:ObjCHeader:iOS",
     "QreaderTask.mm:ObjCSource:iOS",
     "QRCodeReader.h:ObjCHeader:iOS",
@@ -39,6 +40,13 @@
     "QRCodeReaderView.h:ObjCHeader:iOS",
     "QRCodeReaderView.mm:ObjCSource:iOS",
     "QRCodeReaderViewController.h:ObjCHeader:iOS",
-    "QRCodeReaderViewController.mm:ObjCSource:iOS"
+    "QRCodeReaderViewController.mm:ObjCSource:iOS",
+    "BarcodeCaptureActivity.java:Java:Android",
+    "BarcodeGraphic.java:Java:Android",
+    "BarcodeGraphicTracker.java:Java:Android",
+    "BarcodeTrackerFactory.java:Java:Android",
+    "CameraSource.java:Java:Android",
+    "CameraSourcePreview.java:Java:Android",
+    "GraphicOverlay.java:Java:Android"
   ]
 }
