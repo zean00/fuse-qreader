@@ -1,4 +1,4 @@
-<App Theme="Basic">
+<App>
 	<Qreader ux:Global="Qreader" />
 	<JavaScript>
 		var qreader = require('Qreader');
