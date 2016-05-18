@@ -1,7 +1,4 @@
 {
-  "RootNamespace":{
-    "Android" : { "Package" : "com.fuse.qreader" }
-  },
   "Packages": [
         "Fuse",
         "FuseJS"
