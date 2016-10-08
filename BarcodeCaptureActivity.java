@@ -192,7 +192,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity {
         // make sure that auto focus is an available option
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             builder = builder.setFocusMode(
-                    autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE : null);
+                    autoFocus ? Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO : null);
         }
 
         mCameraSource = builder.build();
