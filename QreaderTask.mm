@@ -26,6 +26,7 @@
 
 #import "QreaderTask.h"
 #import "QRCodeReaderViewController.h"
+#import "uObjC.Foreign.h"
 @{QreaderImpl:IncludeDirective}
 
 @implementation QreaderTask
