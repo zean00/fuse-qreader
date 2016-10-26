@@ -31,9 +31,9 @@ public class Qreader : NativeModule {
 																"com.google.android.gms.vision.barcode.Barcode")]
 
 [ForeignInclude(Language.ObjC, "QreaderTask.h", "QRCodeReaderViewController.h","QRCodeReader.h")]
-[Require("Gradle.Dependencies.Compile","com.android.support:support-v4:23.0.1")]
-[Require("Gradle.Dependencies.Compile","com.google.android.gms:play-services:9.2.1")]
-[Require("Gradle.Dependencies.Compile","com.android.support:design:23.0.1")]
+[Require("Gradle.Dependency.Compile","com.android.support:support-v4:23.0.1")]
+[Require("Gradle.Dependency.Compile","com.google.android.gms:play-services-vision:9.2.1")]
+[Require("Gradle.Dependency.Compile","com.android.support:design:23.0.1")]
 public class QreaderImpl
 {
 	static int RC_BARCODE_CAPTURE = 9001;
@@ -98,9 +98,9 @@ public class QreaderImpl
 		throw new Fuse.Scripting.Error("Unsupported platform");
 	}
 
-	[Require("Gradle.Dependencies.Compile","com.android.support:support-v4:23.0.1")]
-	[Require("Gradle.Dependencies.Compile","com.google.android.gms:play-services:9.2.1")]
-	[Require("Gradle.Dependencies.Compile","com.android.support:design:23.0.1")]
+	[Require("Gradle.Dependency.Compile","com.android.support:support-v4:23.0.1")]
+	[Require("Gradle.Dependency.Compile","com.google.android.gms:play-services-vision:9.2.1")]
+	[Require("Gradle.Dependency.Compile","com.android.support:design:23.0.1")]
 	[Require("AndroidManifest.ApplicationElement", "<activity android:name=\"com.fuse.qreader.BarcodeCaptureActivity\" android:theme=\"@style/Theme.AppCompat\"></activity>")]
 	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera\"/>")]
 	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>")]
