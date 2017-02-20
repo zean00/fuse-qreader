@@ -8,6 +8,9 @@ The QR Code reader is using built iOS framework and the code is based on sample 
 
 The android version is based on google vision sample that use Google Vision API (Part of Google Play Service library) (https://github.com/googlesamples/android-vision)
 
+## Dependency (Android)
+* Android Support Repository
+* Google Play Services
 
 ## Installation
 
