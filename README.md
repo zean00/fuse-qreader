@@ -18,7 +18,7 @@ The android version is based on google vision sample that use Google Vision API 
 
 Android 
 ```
-fuse build -t=android -DGRADLE -r Example/Example.unoproj
+fuse build -t=android -r Example/Example.unoproj
 ```
 
 ## Usage
