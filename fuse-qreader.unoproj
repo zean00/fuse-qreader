@@ -1,12 +1,10 @@
 {
-  "RootNamespace":"",
   "Packages": [
-        "Fuse",
-        "FuseJS"
+    "Fuse",
+    "FuseJS"
   ],
   "Includes": [
     "*.uno",
-    "*.ux",
     "QreaderTask.h:ObjCHeader:iOS",
     "QreaderTask.mm:ObjCSource:iOS",
     "QRCodeReader.h:ObjCHeader:iOS",
