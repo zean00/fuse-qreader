@@ -57,8 +57,8 @@ public class QreaderImpl
 			 if (_intentListener == null)
 				_intentListener = Init();
 		}
-		ScannerImpl();
 		FutureResult = new Promise<string>();
+		ScannerImpl();
 		return FutureResult;
 	}
 
