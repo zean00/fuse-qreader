@@ -1,5 +1,4 @@
 <App>
-	<Qreader ux:Global="Qreader" />
 	<JavaScript>
 		var qreader = require('Qreader');
 		var Observable = require('FuseJS/Observable');

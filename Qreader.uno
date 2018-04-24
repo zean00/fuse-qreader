@@ -5,9 +5,17 @@ using Fuse.Reactive;
 using Fuse;
 using Uno.Compiler.ExportTargetInterop;
 using Uno.Threading;
+using Uno.UX;
 
+[UXGlobalModule]
 public class Qreader : NativeModule {
+
+	static readonly Qreader _instance;
+
 	public Qreader () {
+		if (_instance != null) return;
+		_instance = this;
+		Uno.UX.Resource.SetGlobalKey(_instance, "Qreader");
 		// Add Load function to load image as a texture
 		AddMember(new NativePromise<string, string>("scan", (FutureFactory<string>)Scan,null));
 	}
@@ -148,8 +156,8 @@ public class QreaderImpl
 	}
 
 	public static void Picked (string result) {
+		if(InProgress)FutureResult.Resolve(result);
 		InProgress = false;
-		FutureResult.Resolve(result);
 	}
 
 }
