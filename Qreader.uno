@@ -40,7 +40,7 @@ public class Qreader : NativeModule {
 
 [ForeignInclude(Language.ObjC, "QreaderTask.h", "QRCodeReaderViewController.h","QRCodeReader.h")]
 [Require("Gradle.Dependency.Compile","com.android.support:support-v4:23.0.1")]
-[Require("Gradle.Dependency.Compile","com.google.android.gms:play-services-vision:9.2.1")]
+[Require("Gradle.Dependency.Compile","com.google.android.gms:play-services-vision:12.0.1")]
 [Require("Gradle.Dependency.Compile","com.android.support:design:23.0.1")]
 public class QreaderImpl
 {
@@ -107,12 +107,11 @@ public class QreaderImpl
 	}
 
 	[Require("Gradle.Dependency.Compile","com.android.support:support-v4:23.0.1")]
-	[Require("Gradle.Dependency.Compile","com.google.android.gms:play-services-vision:9.2.1")]
+	[Require("Gradle.Dependency.Compile","com.google.android.gms:play-services-vision:12.0.1")]
 	[Require("Gradle.Dependency.Compile","com.android.support:design:23.0.1")]
 	[Require("AndroidManifest.ApplicationElement", "<activity android:name=\"com.fuse.qreader.BarcodeCaptureActivity\" android:theme=\"@style/Theme.AppCompat\"></activity>")]
 	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera\"/>")]
 	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>")]
-	[Require("AndroidManifest.RootElement", "<uses-permission android:name=\"android.permission.CAMERA\"/>")]
 	[Foreign(Language.Java)]
 	static extern(Android) void ScannerImpl ()
 	@{
