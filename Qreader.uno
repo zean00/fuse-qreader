@@ -34,13 +34,13 @@ public class Qreader : NativeModule {
                 "android.content.Intent",
                 "android.net.Uri",
                 "android.os.Bundle",
-				"com.google.android.gms.common.api.CommonStatusCodes",
-				"com.fuse.qreader.BarcodeCaptureActivity",
-				"com.google.android.gms.vision.barcode.Barcode")]
+																"com.google.android.gms.common.api.CommonStatusCodes",
+																"com.fuse.qreader.BarcodeCaptureActivity",
+																"com.google.android.gms.vision.barcode.Barcode")]
 
 [ForeignInclude(Language.ObjC, "QreaderTask.h", "QRCodeReaderViewController.h","QRCodeReader.h")]
 [Require("Gradle.Dependency.Implementation","com.android.support:support-v4:23.0.1")]
-[Require("Gradle.Dependency.Implementation","com.google.android.gms:play-services-vision:16.2.0")]
+[Require("Gradle.Dependency.Implementation","com.google.android.gms:play-services-vision:17.0.2")]
 [Require("Gradle.Dependency.Implementation","com.android.support:design:23.0.1")]
 public class QreaderImpl
 {
@@ -107,7 +107,7 @@ public class QreaderImpl
 	}
 
 	[Require("Gradle.Dependency.Implementation","com.android.support:support-v4:23.0.1")]
-	[Require("Gradle.Dependency.Implementation","com.google.android.gms:play-services-vision:16.2.0")]
+	[Require("Gradle.Dependency.Implementation","com.google.android.gms:play-services-vision:17.0.2")]
 	[Require("Gradle.Dependency.Implementation","com.android.support:design:23.0.1")]
 	[Require("AndroidManifest.ApplicationElement", "<activity android:name=\"com.fuse.qreader.BarcodeCaptureActivity\" android:theme=\"@style/Theme.AppCompat\"></activity>")]
 	[Require("AndroidManifest.RootElement", "<uses-feature android:name=\"android.hardware.camera\"/>")]
